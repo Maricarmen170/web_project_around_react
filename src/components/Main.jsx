@@ -30,7 +30,7 @@ function Main(props) {
         })
     },[])
     return(
-        <body className="body">
+        <section className="body">
             <div className="page">
             <main className="content">
         <section className="profile">
@@ -107,7 +107,7 @@ function Main(props) {
         </section>
         </main>
             </div>
-        </body>
+        </section>
     );
 }
 
