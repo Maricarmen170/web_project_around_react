@@ -1,5 +1,4 @@
 .profile{
-    /*height: auto;*/
     max-width: 55rem;
     max-height: 7.5rem;
     display: grid;
@@ -10,8 +9,9 @@
 }
 @media screen and (min-width:320px)and (max-width:768px) {
     .profile{
+        display: flex;
         flex-direction: column;
-        width: 320px;
+        min-height: 400px;
     }   
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import trash from '../Blocks/images/__trash(1).png'
-import icon from '../Blocks/images/__iconlike.png'
+import trash from '../images/__trash(1).png'
+import icon from '../images/__iconlike.png'
 
 function Card(props) {
     function handleClick() {

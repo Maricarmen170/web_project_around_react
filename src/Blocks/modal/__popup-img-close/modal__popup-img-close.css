@@ -2,7 +2,7 @@
     position: absolute;
     z-index: 5;
     top: 60px;
-    left: 1090px;
+    left: 1050px;
 }
 .modal__popup-img-close:hover {
     opacity: 0.4;
@@ -15,6 +15,6 @@
     .modal__popup-img-close{
         left: 80%;
         right: -1.63%;
-        top: 70px;
+        top: 50px;
     }   
 }

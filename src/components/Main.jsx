@@ -1,20 +1,20 @@
 import React from 'react';
-import editar from '../Blocks/images/__Vector (2).png';
-import agregar from '../Blocks/images/Vector (3).png';
+import editIcon from '../images/__Vector (2).png';
+import addIcon from '../images/Vector (3).png';
 import { useState, useEffect } from 'react';
 import api from '../utils/api';
 import Card from './Card';
 
 function Main(props) {
     const [userName, setUserName] = useState("");
-    const [userDescription, setuserDescription] = useState("");
+    const [userDescription, setUserDescription] = useState("");
     const [userAvatar, setUserAvatar] = useState("");
     const [cards,setCards] = useState([]);
 
     useEffect(()=>{
         api.getUserInfo().then((data)=>{
             setUserName(data.name)
-            setuserDescription(data.about)
+            setUserDescription(data.about)
             setUserAvatar(data.avatar)
         })
         .catch((err)=>{
@@ -30,11 +30,13 @@ function Main(props) {
         })
     },[])
     return(
-        <main className="content">
+        <body className="body">
+            <div className="page">
+            <main className="content">
         <section className="profile">
         <img className="profile__image-avatar" src={userAvatar} alt="avatar profile" />
             <div className="profile__image-overlay" >
-            <img className="profile__image-button" src={editar} alt="icono editar foto" onClick={props.onEditAvatarClick}/>
+            <img className="profile__image-button" src={editIcon} alt="icono editar foto" onClick={props.onEditAvatarClick}/>
             </div>
             <div className="profile__info">
                 <div className="profile__text">
@@ -42,14 +44,16 @@ function Main(props) {
                 <p className="profile__ocupation">{userDescription}</p>
                 </div>
                 <button type="button" className="profile__edit" onClick={props.onEditProfileClick}>
-                <img src={editar} alt="icono de lapiz para editar" />
+                <img src={editIcon} alt="icono de lapiz para editar" />
                 </button>
             </div>
                 <button className="profile__add-button" onClick={props.onAddPlaceClick}>
-                <img src={agregar} alt="icono de agregar" />
+                <img src={addIcon} alt="icono de agregar" />
                 </button>
                 
-            <form method="get" className="popup" id="popup-place">
+        </section>
+
+        <form method="get" className="popup" id="popup-place">
                 <button type="button" className="popup__close-icon" id="close-icon-cards">
                 </button>
                 <fieldset className="popup__container" >
@@ -61,7 +65,6 @@ function Main(props) {
                     <button type="submit" className="popup__button" id="submit-place">Crear</button>
                 </fieldset>
             </form>
-        </section>
         
         <form method="get" className="popup" id="popup-profile">
             <button type="button" className="popup__profile-close-icon" id="close-icon-popup">
@@ -103,6 +106,8 @@ function Main(props) {
             })}
         </section>
         </main>
+            </div>
+        </body>
     );
 }
 

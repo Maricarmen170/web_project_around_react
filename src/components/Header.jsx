@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../Blocks/images/__logoheader.png'
+import logo from '../images/__logoheader.png'
 
 function Header() {
     return(

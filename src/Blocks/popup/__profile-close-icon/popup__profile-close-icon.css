@@ -3,10 +3,10 @@
     width: 2.5rem;
     height: 2.5rem;
     background-color: #000000;
-    left: 65.75%;
-    right: 30.73%;
-    top: 10.1875rem;
-    background-image: url(../../images/__CloseIcon.png);
+    left: 67%;
+    right: 20%;
+    top: 140px;
+    background-image: url(../../../images/__CloseIcon.png);
     background-size: contain;
     background-repeat: no-repeat;
     border: none;
@@ -15,7 +15,7 @@
     .popup__profile-close-icon{
         width: 1.625rem;
         height: 1.625rem;
-        left: 87%;
+        left: 90%;
         top: 25%;
     }   
 }
