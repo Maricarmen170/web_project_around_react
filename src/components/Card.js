@@ -1,7 +1,7 @@
 import React , { useContext } from 'react'
 import trash from '../images/__trash(1).png'
 import icon from '../images/__iconlike.png'
-import { currentUserContext } from '../contexts/currentUserContext'
+import { currentUserContext } from '../contexts/CurrentUserContext'
 
 function Card(props) {
   const currentUser = useContext(currentUserContext);

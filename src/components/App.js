@@ -1,5 +1,5 @@
 import '../index.css';
-import { currentUserContext } from "../contexts/currentUserContext";
+import { currentUserContext } from "../contexts/CurrentUserContext";
 import Footer from './Footer';
 import Header from './Header';
 import ImagePopup from './ImagePopup';

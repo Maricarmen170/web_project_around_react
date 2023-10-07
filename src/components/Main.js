@@ -3,7 +3,7 @@ import editIcon from '../images/__Vector (2).png';
 import addIcon from '../images/Vector (3).png';
 import { useContext } from 'react';
 import Card from './Card';
-import { currentUserContext } from '../contexts/currentUserContext';
+import { currentUserContext } from '../contexts/CurrentUserContext';
 
 function Main(props) {
 
