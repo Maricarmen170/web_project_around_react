@@ -1,5 +1,5 @@
 import '../index.css';
-import { currentUserContext } from "../contexts/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Footer from './Footer';
 import Header from './Header';
 import ImagePopup from './ImagePopup';
@@ -103,7 +103,7 @@ function closeAllPopups() {
 }
   return (
     <div className="body">
-      <currentUserContext.Provider value={currentUser}>
+      <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header />
         <Main
@@ -137,7 +137,7 @@ function closeAllPopups() {
 
         <ImagePopup isOpen={isImagePopupOpen} card={selectedCard} onClose={closeAllPopups}/>
     </div>
-      </currentUserContext.Provider>
+      </CurrentUserContext.Provider>
     </div>
   );
 }

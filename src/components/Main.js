@@ -3,11 +3,11 @@ import editIcon from '../images/__Vector (2).png';
 import addIcon from '../images/Vector (3).png';
 import { useContext } from 'react';
 import Card from './Card';
-import { currentUserContext } from '../contexts/CurrentUserContext';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main(props) {
 
-    const currentUser = useContext(currentUserContext);
+    const currentUser = useContext(CurrentUserContext);
 
 
     return(
