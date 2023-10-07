@@ -1,47 +1,28 @@
 import React from 'react';
 import editIcon from '../images/__Vector (2).png';
 import addIcon from '../images/Vector (3).png';
-import { useState, useEffect } from 'react';
-import api from '../utils/api';
+import { useContext } from 'react';
 import Card from './Card';
+import { currentUserContext } from '../contexts/currentUserContext';
 
 function Main(props) {
-    const [userName, setUserName] = useState("");
-    const [userDescription, setUserDescription] = useState("");
-    const [userAvatar, setUserAvatar] = useState("");
-    const [cards,setCards] = useState([]);
 
-    useEffect(()=>{
-        api.getUserInfo().then((data)=>{
-            setUserName(data.name)
-            setUserDescription(data.about)
-            setUserAvatar(data.avatar)
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-    },[])
-    useEffect(()=>{
-        api.getCardList().then((data)=>{
-            setCards(data)
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
-    },[])
+    const currentUser = useContext(currentUserContext);
+
+
     return(
         <section className="body">
             <div className="page">
             <main className="content">
         <section className="profile">
-        <img className="profile__image-avatar" src={userAvatar} alt="avatar profile" />
+        <img className="profile__image-avatar" src={currentUser.avatar} alt="avatar profile" />
             <div className="profile__image-overlay" >
             <img className="profile__image-button" src={editIcon} alt="icono editar foto" onClick={props.onEditAvatarClick}/>
             </div>
             <div className="profile__info">
                 <div className="profile__text">
-                <h2 className="profile__name">{userName} </h2>
-                <p className="profile__ocupation">{userDescription}</p>
+                <h2 className="profile__name">{currentUser.name} </h2>
+                <p className="profile__ocupation">{currentUser.about}</p>
                 </div>
                 <button type="button" className="profile__edit" onClick={props.onEditProfileClick}>
                 <img src={editIcon} alt="icono de lapiz para editar" />
@@ -98,11 +79,20 @@ function Main(props) {
             </fieldset>
         </form>
         <section className="elements">
-            {cards.map((card)=>{
+            {props.cards.map((card)=>{
                 return(
-                    <Card key={card._id} name={card.name} link={card.link}
-                    likes={card.likes} onCardClick={props.onCardClick}/>
-                )
+                    <Card
+                    owner={card.owner}
+                    key={card._id}
+                    card={card}
+                    name={card.name}
+                    link={card.link}
+                    likes={card.likes}
+                    onCardClick={props.onCardClick}
+                    onCardLike={props.onCardLike}
+                    onCardDelete={props.onCardDelete}
+                    />
+                );
             })}
         </section>
         </main>

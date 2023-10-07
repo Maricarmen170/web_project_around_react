@@ -67,7 +67,19 @@ class Api {
             avatar,
         });
     }
+
+    async changeLikeCardStatus(cardId, isLiked){
+        const card = isLiked 
+        ? await this.removeLike(cardId)
+        : await this.addLike(cardId)
+        return card;
+    }
 }
+
+
+
+
+
 const api = new Api({
     baseUrl: "https://around.nomoreparties.co/v1/web_es_05",
     headers: {

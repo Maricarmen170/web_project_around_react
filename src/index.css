@@ -44,6 +44,7 @@
 @import url(./Blocks/icon-like/_number/icon-like_number.css);
 /*ICON-REMOVE*/
 @import url(./Blocks/icon-remove/icon-remove.css);
+@import url(./Blocks/icon-remove/_active/icon-remove_active.css);
 /*MODAL*/
 @import url(./Blocks/modal/modal.css);
 @import url(./Blocks/modal/__popup-img/modal__popup-img.css);

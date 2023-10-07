@@ -1,0 +1,21 @@
+import React, { useRef, useContext }from 'react'
+import PopupWithForm from './PopupWithForm'
+import { currentUserContext } from '../contexts/currentUserContext';
+
+function EditAvatarPopup({isOpen, onClose, onUpdateAvatar}) {
+    const currentUser = useContext(currentUserContext);
+    const avatar = useRef(currentUser.avatar)
+
+    function handleSubmit(evt){
+        evt.preventDefault();
+        onUpdateAvatar(avatar.current);
+    }
+  return (
+    <PopupWithForm title="Actualizar foto de perfil" name="avatar" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit} >
+    <input type="url" name="src" id="src"  className="popup__text"   onChange={(evt)=> { avatar.current = evt.target.value;}}/>
+    <span className="popup__input-error about-me-error" id="src-error"></span>
+    </PopupWithForm>
+  )
+}
+
+export default EditAvatarPopup

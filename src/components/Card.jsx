@@ -1,20 +1,43 @@
-import React from 'react'
+import React , { useContext } from 'react'
 import trash from '../images/__trash(1).png'
 import icon from '../images/__iconlike.png'
+import { currentUserContext } from '../contexts/currentUserContext'
 
 function Card(props) {
-    function handleClick() {
-      props.onCardClick(props)
-    }
+  const currentUser = useContext(currentUserContext);
+  
+const isOwn = props.owner._id === currentUser._id;
+const cardDeleteButtonClassName = `icon-remove ${
+  isOwn ? 'icon-remove_active' : ''
+}`;
+
+const isLiked = props.likes.some(item => item._id === currentUser._id);
+const cardLikeButtonClassName = `icon-like ${
+  isLiked ? 'icon-like_active': ''
+}`;
+
+
+
+function handleCardLike(){
+  props.onCardLike(props.card)
+}
+
+function handleClick() {
+  props.onCardClick(props)
+}
+
+function handleCardDelete() {
+  props.onCardDelete(props.card)
+}
   return (
     <div className="element">
     <img className="element__image" src={props.link} alt=" " onClick={handleClick}/>
     <div className="remove">
-        <img className="icon-remove" id="trashButton" src={trash} alt="icono de bote de basura" />
+        <img className={cardDeleteButtonClassName} id="trashButton" src={trash} onClick={handleCardDelete} alt="icono de bote de basura" />
     </div>
     <div className="element__footer-photo">
         <p className="element__footer-text">{props.name}</p>
-        <img className="icon-like"  id="likeButton" src={icon}alt="iconolike" />
+        <img className={cardLikeButtonClassName}  id="likeButton" src={icon} alt="iconolike" onClick={handleCardLike}/>
         <p className="icon-like_number">{props.likes.length}</p>
     </div>
     </div>
