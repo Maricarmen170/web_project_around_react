@@ -1,0 +1,26 @@
+.modal__popup-img-background {
+    position: relative;
+    display: flex;
+    max-width: 70vw;
+    max-height: 75vh;
+    /*top: 100px;
+    left: 250px;*/
+    margin: auto;
+    top: 100px;
+    /*align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    object-fit: contain;
+    object-position: center;*/
+
+}
+@media screen and (min-width:320px)and (max-width:768px) {
+    .modal__popup-img-background{
+        width: 240px;
+        height: 299px;
+        /*left: 40px;
+        top:136px;*/
+        margin: auto;
+        left: 8px;
+    }   
+}
