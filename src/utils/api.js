@@ -76,10 +76,6 @@ class Api {
     }
 }
 
-
-
-
-
 const api = new Api({
     baseUrl: "https://around.nomoreparties.co/v1/web_es_05",
     headers: {

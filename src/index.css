@@ -81,3 +81,15 @@
 @import url(./blocks/popup/__img-edit/_button/popup__img-edit_button.css);
 @import url(./blocks/popup/__img-edit/_opened/popup__img-edit_opened.css);
 @import url(./blocks/popup/__img-title/popup__img-title.css);
+
+@import url(./blocks/infoTooltip/infoTooltip.css);
+@import url(./blocks/login/login.css);
+@import url(./blocks/register/register.css);
+@import url(./blocks/form/form.css);
+@import url(./blocks/form/__button/form__button.css);
+@import url(./blocks/form/__input/form__input.css);
+@import url(./blocks/form/__label/form__label.css);
+@import url(./blocks/form/__link/form__link.css);
+@import url(./blocks/form/__title/form__title.css);
+@import url(./blocks/header/__link/header__link.css);
+@import url(./blocks/popup/__close-button/popup__close-button.css);

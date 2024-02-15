@@ -9,6 +9,11 @@ import api from '../utils/api';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
+import Login from './Login';
+import Register from './Register';
+import { Switch,Route } from 'react-router-dom/cjs/react-router-dom.min';
+import ProtectedRoute from './ProtectedRoute';
+import { registerUser } from '../utils/auth.js';
 
 
 
@@ -20,6 +25,7 @@ function App() {
   const [selectedCard,setSelectedCard] = useState({});
   const [isImagePopupOpen,setIsImagePopupOpen] = useState(false);
   const [cards,setCards] = useState([]);
+  const [loggedIn, setLoggedIn] = useState(false);
 
 
   useEffect(()=>{
@@ -101,20 +107,35 @@ function closeAllPopups() {
   setIsImagePopupOpen(false)
   setSelectedCard(false)
 }
+
+async function handleRegisterUser(email, password) {
+  const response = await registerUser(email, password);
+  return response;
+}
+
   return (
     <div className="body">
       <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header />
-        <Main
-        onEditProfileClick={handleEditProfileClick}
-        onEditAvatarClick={handleEditAvatarClick}
-        onAddPlaceClick={handleAddPlaceClick}
-        onCardClick={handleCardClick}
-        cards={cards}
-        onCardLike={handleCardLike}
-        onCardDelete={handleDeleteCard}
-        />
+        <Switch>
+          <Route path="/signin">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <Register onRegister={async () => handleRegisterUser}/>
+          </Route>
+          <ProtectedRoute exact path="/" loggedIn={loggedIn}
+            component={Main}
+            onEditProfileClick={handleEditProfileClick}
+            onEditAvatarClick={handleEditAvatarClick}
+            onAddPlaceClick={handleAddPlaceClick}
+            onCardClick={handleCardClick}
+            cards={cards}
+            onCardLike={handleCardLike}
+            onCardDelete={handleDeleteCard}
+          />
+        </Switch>
         <Footer />
 
         <EditProfilePopup
