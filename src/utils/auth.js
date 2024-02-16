@@ -2,9 +2,6 @@
 import { BASE_URL } from "./config";
 
 
-//export const registerUser = async (email, password) => {
-    //const response = await api.registerUser(email, password)
-//}
 
 export const registerUser = (email, password) => {
     return fetch(`${BASE_URL}/signup`, {
@@ -20,14 +17,13 @@ export const registerUser = (email, password) => {
       .catch((err) => console.log(err));
   };
 
-export const authorize = (identifier, password) => {
+export const authorize = (email, password) => {
     return fetch(`${BASE_URL}/signin`,{
         method: 'POST',
         headers: {
-            'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({identifier,password})
+        body: JSON.stringify({email,password})
     })
     .then((response => response.json()))
     .then((data) => {

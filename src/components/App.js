@@ -113,6 +113,7 @@ async function handleRegisterUser(email, password) {
   return response;
 }
 
+
   return (
     <div className="body">
       <CurrentUserContext.Provider value={currentUser}>

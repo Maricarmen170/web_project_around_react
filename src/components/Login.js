@@ -1,12 +1,12 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as auth from "../utils/auth";
 import InfoTooltip from "./InfoTooltip";
 
 const Login = ({ handleLogin }) => {
     const [formData, setFormData] = React.useState({});
     const [infoToolOpen, setInfoToolOpen] = React.useState(null);
-    const history = useHistory();
+    const navigate = useNavigate();
   
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -17,7 +17,7 @@ const Login = ({ handleLogin }) => {
     };
     const handleCloseInfoTool = () => {
       setInfoToolOpen(false);
-      history("/signin", { state: {} });
+      navigate("/signin", { state: {} });
     };
     const onLogin = (e) => {
       const { password, email } = formData;
@@ -27,14 +27,14 @@ const Login = ({ handleLogin }) => {
         .then((data) => {
           if (data.token) {
             setFormData({ email: "", password: "" });
-            history("/");
+            navigate("/");
             handleLogin();
           }
         })
         .catch((err) => {
           setInfoToolOpen(true);
           setFormData({ email: "", password: "" });
-          history("/signin", { state: { error: err } });
+          navigate("/signin", { state: { error: err } });
           handleLogin();
           console.log(err);
         });

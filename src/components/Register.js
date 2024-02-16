@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as auth from "../utils/auth";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InfoTooltip from "./InfoTooltip";
 import api from '../utils/api';
 
@@ -9,7 +9,7 @@ const Register = () => {
     const [formData, setFormData] = useState({});
     const [infoToolOpen, setInfoToolOpen] = React.useState(false);
     const [error, setError] = React.useState(false);
-    const history = useHistory();
+    const navigate = useNavigate();
   
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -29,7 +29,7 @@ const Register = () => {
       const { email, password } = formData;
       auth.registerUser(email, password).then((res) => {
         if (res.data) {
-          history("/signin", { state: "success" });
+          navigate("/signin", { state: "success" });
         } else {
           setError(true);
         }
@@ -41,7 +41,7 @@ const Register = () => {
     return (
         <section className="register" onSubmit={onRegister}>
             <form className="form" action="#"  noValidate>
-                <h2 className="form__title">Registrate</h2>
+                <h2 className="form__title">Regístrate</h2>
                 <label className="form__label">
 
                 <input
@@ -49,7 +49,7 @@ const Register = () => {
                     id="register__email"
                     name="email"
                     className="form__input"
-                    placeholder="Correo electronico"
+                    placeholder="Correo electrónico"
                     required
                     onChange={handleChange}
                     

@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../images/__logoheader.png';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 
 function Header({ handleSignOut, email }) {
     const [open, setOpen] = React.useState(false);
@@ -17,13 +17,13 @@ function Header({ handleSignOut, email }) {
     return(
         <header className="header">
             <img className="header__logo" src={logo} alt="logo" />
-            {useRouteMatch("/signin") && (
+            {useMatch("/signin") && (
                 <Link to="/signup" className="header__link">
                     Regístrate
                 </Link>
             )}
 
-            {useRouteMatch("/signup") && (
+            {useMatch("/signup") && (
                 <Link to="/signin" className="header__link">
                     Inicia sesión
                 </Link>
