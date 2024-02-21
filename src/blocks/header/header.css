@@ -1,13 +1,23 @@
-.header{
+
+.header {
+    width: 100%;
+    top: 20px;
+    height: 75px;
+    max-width: 880px;
     margin: 2.8125rem auto 2.5rem;
-    width: 55rem;
-    height: 4.625rem;
-    border-bottom: .0625rem  #545454 solid;
+    /*margin: 0 auto 0;*/
+    border-bottom: 1px solid #545454;
+    padding: 0 19px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    position: relative;
+    transition: all 0.3s ease-in-out;
 }
+
 @media screen and (min-width:320px)and (max-width:768px) {
-    .header{
-        width: 20rem;
-        height:3.5rem;
-        margin: 1.75rem 0 2.375rem;
-    }   
+    .header {
+        max-height: 56px;
+        padding: 0%;
+    }
 }

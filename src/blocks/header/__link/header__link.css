@@ -5,8 +5,6 @@
     line-height: 1.22;
     font-weight: 400;
     transition: opacity 0.3s ease;
-    margin-left: 750px;
-    margin-bottom: 2.5625rem;
 }
 
 .header__link:hover {

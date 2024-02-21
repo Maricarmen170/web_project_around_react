@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import * as auth from "../utils/auth";
 import { Link, useNavigate } from "react-router-dom";
 import InfoTooltip from "./InfoTooltip";
-import api from '../utils/api';
 
 
 const Register = () => {
@@ -67,7 +66,7 @@ const Register = () => {
                 />
                 </label>
                 <button type="submit" className="form__button">
-                    Registrate
+                    Regístrate
                 </button>
                 <Link to="/signin" className="form__link">
                     ¿Ya eres miembro? Inicia sesión aquí

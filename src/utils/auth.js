@@ -1,20 +1,18 @@
-
 import { BASE_URL } from "./config";
 
-
-
-export const registerUser = (email, password) => {
-    return fetch(`${BASE_URL}/signup`, {
+export const registerUser = async (email, password) => {
+    try {
+    const res = await fetch(`${BASE_URL}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .catch((err) => console.log(err));
+    });
+    return await res.json();
+  } catch (err) {
+    return console.log(err);
+  }
   };
 
 export const authorize = (email, password) => {
@@ -25,24 +23,28 @@ export const authorize = (email, password) => {
         },
         body: JSON.stringify({email,password})
     })
-    .then((response => response.json()))
+    .then((res) => res.json())
     .then((data) => {
-        if(data.user) {
-            localStorage.setItem('jwt', data.jwt);
-
+        if(data.token) {
+            localStorage.setItem('jwt', data.token);
             return data;
         }
     })
     .catch(err => console.log(err))
 };
 
-export const checkToken = (token) => {
-    return fetch(`${BASE_URL}/users/me`, {
+export const checkToken = async (token) => {
+    try {
+    const res = await fetch(`${BASE_URL}/users/me`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    }).then((res) => res.json());
+    });
+    console.log("res",res)
+    return await res.json();
+  } catch (err) {
+    console.log(err);
+  }
   };
-  

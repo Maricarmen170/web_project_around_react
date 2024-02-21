@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Proyecto React: Alrededor de los Estados Unidos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripción general
 
-## Available Scripts
+### Introducción
 
-In the project directory, you can run:
+Alrededor de los Estados Unidos es la evolución de nuestro proyecto 4, en el cual TripleTen nos brindó la oportunidad de comenzar a trabajar con JavaScript. En este proyecto, el desafío es refactorizar nuestra red social y migrarla a React. Aquí, en lugar de utilizar directamente HTML, creamos componentes de React utilizando archivos JSX para construir un esqueleto que se integra con HTML.
 
-### `npm start`
+Este proyecto presenta varios retos, ya que implementamos la funcionalidad de la página mediante el paradigma declarativo, abandonando el enfoque imperativo al que estábamos acostumbrados con JavaScript vanilla. De manera sorprendente, con unas pocas líneas de código logramos abrir y cerrar los popups de nuestra red social. Conectamos las solicitudes a la API de manera sencilla y, aunque no fue fácil, logramos adaptarnos a React. Una vez más, refactorizamos nuestro código para hacerlo más limpio y fácil de mantener.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Herramientas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React
+- CSS
+- JSX
+- Flexbox (CSS)
+- Metodología BEM (Yandex)
+- Media Queries
 
-### `npm test`
+**React:** Utilizamos Create React App (CRA) para desarrollar nuestra red social. Cada sección de nuestra página es un componente JSX, lo que nos ayudó a mantener el código ordenado. El archivo App.js contiene la estructura principal de la página, incluyendo el encabezado (Header), el contenido principal (Main) y el pie de página (Footer).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Main.jsx:** En este archivo se encuentran los componentes que conforman todas las secciones de la página. Cada componente tiene argumentos específicos para activar las funcionalidades de apertura y cierre. También utilizamos los Hooks de React (useState y useEffect) para establecer los estados iniciales y realizar solicitudes a la API.
 
-### `npm run build`
+**CSS:** Migramos las clases de estilo de nuestro proyecto anterior, manteniendo la estructura de carpetas y archivos, dejando la carpeta Blocks para futuras actualizaciones.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Próximas Actualizaciones
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+En futuras actualizaciones, planeamos implementar las siguientes características:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Confirmación de eliminación al borrar una tarjeta.
+- Edición del nombre y descripción del perfil.
+- Adición de nuevas tarjetas a la red social.
+- Implementación del contador de "likes".
 
-### `npm run eject`
+## Repositorio
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Si deseas explorar el código y los detalles de nuestro proyecto, puedes visitar el repositorio en GitHub: [Enlace al Repositorio] (https://github.com/Maricarmen170/web_project_around_auth)

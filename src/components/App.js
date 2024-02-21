@@ -1,3 +1,4 @@
+import React from 'react';
 import '../index.css';
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Footer from './Footer';
@@ -11,9 +12,9 @@ import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import Login from './Login';
 import Register from './Register';
-import { Switch,Route } from 'react-router-dom/cjs/react-router-dom.min';
+import { Route, Routes, Navigate, useNavigate } from 'react-router-dom';
 import ProtectedRoute from './ProtectedRoute';
-import { registerUser } from '../utils/auth.js';
+import * as auth from "../utils/auth";
 
 
 
@@ -26,7 +27,10 @@ function App() {
   const [isImagePopupOpen,setIsImagePopupOpen] = useState(false);
   const [cards,setCards] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [email, setEmail] = useState("");
 
+
+  const navigate = useNavigate();
 
   useEffect(()=>{
     api.getCardList().then((data)=>{
@@ -68,6 +72,7 @@ function handleDeleteCard(card) {
     })
   }
 
+
   function handleUpdateAvatar (avatar){
     api.editUserAvatar(avatar).then((data)=>{
       setCurrentUser(data);
@@ -107,27 +112,55 @@ function closeAllPopups() {
   setIsImagePopupOpen(false)
   setSelectedCard(false)
 }
+function handleLogin () {
+  setLoggedIn(true);
+}
+const handleSignOut = () => {
+  localStorage.removeItem("jwt");
+  setEmail("");
+  setLoggedIn(false);
+};
 
-async function handleRegisterUser(email, password) {
+/*async function handleRegisterUser(email, password) {
   const response = await registerUser(email, password);
   return response;
-}
+}*/
 
+useEffect(() => {
+  const handleTokenCheck = () => {
+    if (localStorage.getItem("jwt")) {
+      const jwt = localStorage.getItem("jwt");
+      auth
+        .checkToken(jwt)
+        .then((res) => {
+          if (res.data) {
+            setEmail(res.data.email);
+            setLoggedIn(true);
+            navigate("/");
+          } else {
+            console.error("El token no es válido");
+          }
+        })
+        .catch((err) => {
+          console.error("Error al verificar el token:",err);
+        });
+    }
+  };
+  handleTokenCheck();
+}, [loggedIn, navigate]);
 
   return (
     <div className="body">
       <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
-        <Header />
-        <Switch>
-          <Route path="/signin">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <Register onRegister={async () => handleRegisterUser}/>
-          </Route>
-          <ProtectedRoute exact path="/" loggedIn={loggedIn}
-            component={Main}
+        <Header handleSignOut={handleSignOut} email={email} />
+        <Routes>
+          <Route path="/signin" element={<Login handleLogin={handleLogin}/>}/>
+          <Route path='*' element={<Navigate to="/signup" />} />
+          <Route path="/signup" element={<Register/>}/>
+          <Route path='/' element={<ProtectedRoute loggedIn={loggedIn}/>}>
+          <Route path="/" 
+            element={<Main
             onEditProfileClick={handleEditProfileClick}
             onEditAvatarClick={handleEditAvatarClick}
             onAddPlaceClick={handleAddPlaceClick}
@@ -135,8 +168,10 @@ async function handleRegisterUser(email, password) {
             cards={cards}
             onCardLike={handleCardLike}
             onCardDelete={handleDeleteCard}
+            />}
           />
-        </Switch>
+          </Route>
+        </Routes>
         <Footer />
 
         <EditProfilePopup

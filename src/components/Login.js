@@ -23,7 +23,7 @@ const Login = ({ handleLogin }) => {
       const { password, email } = formData;
       e.preventDefault();
       auth
-        .authorize(password, email)
+        .authorize(email, password)
         .then((data) => {
           if (data.token) {
             setFormData({ email: "", password: "" });
